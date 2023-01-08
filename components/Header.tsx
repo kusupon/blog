@@ -42,6 +42,7 @@ export function Header({ app }: { app: AppMeta }): JSX.Element {
         <div className={styles.Search}>
           <button
             type="button"
+            aria-label='Search'
             className={styles.Search_Button}
             onClick={focus}
           >
