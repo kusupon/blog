@@ -55,19 +55,6 @@ export function Home({
     return app.cover?.value && !tagSlug && !authorSlug && !year
   }, [app.cover?.value, tagSlug, authorSlug, year])
 
-  const headingText = useMemo(() => {
-    if (currentTag) {
-      return `#${currentTag.name || currentTag.slug}`
-    }
-    if (currentAuthor) {
-      return `Articles by ${(currentAuthor && currentAuthor.fullName) || ''}`
-    }
-    if (year) {
-      return `Articles in ${year}`
-    }
-    return 'Recent Articles'
-  }, [currentTag, currentAuthor, year])
-
   const paginationBasePath = useMemo(() => {
     if (tagSlug) {
       return `/tag/${tagSlug}`
@@ -92,7 +79,6 @@ export function Home({
         <div className={styles.Container_Inner}>
           <main className={styles.Articles}>
             <div className={styles.Articles_Inner}>
-              <h2 className={styles.Articles_Heading}>{headingText}</h2>
               {articles.map((article) => (
                 <ArticleCard key={article._id} article={article} />
               ))}
